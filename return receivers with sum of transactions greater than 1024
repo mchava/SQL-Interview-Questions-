@@ -1,0 +1,10 @@
+--Write a query that returns a list of receivers that have received at least 1024 USD in at most 3 transactions. 
+--There can be more than 3 transters to that account, as long as some 3 or fewer transactions usd_value total to at least 1024 USD. 
+--The table should be ordered by name (in ascending order).
+
+SELECT t1.recipient FROM transfers AS t1 WHERE (
+SELECT COUNT(*) FROM transfers t2 WHERE t2.recipient = table1.recipient 
+AND t2.amount >= t1 .amount) <= 3
+GROUP BY t1 .recipient
+HAVING SUM(t1 .amount) >= 1024
+ORDER BY t1 .recipient;
